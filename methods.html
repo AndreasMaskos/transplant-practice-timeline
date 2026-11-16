@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Methods and sources - Practice changes in US pediatric heart and lung transplantation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <nav class="top"><a href="index.html">Timeline</a> · <a href="methods.html">Methods and sources</a></nav>
+  <h1>Methods and sources</h1>
+  <p class="draft">Draft. This page describes how the timeline was built and what its limits are.</p>
+</header>
+<main class="prose">
+
+<h2>What this is</h2>
+<p>A dated record of changes in practice in heart and lung transplantation for recipients younger than 18 years in the United States, from the start of national data collection in 1987 to 2026. It covers allocation and listing policy, donor selection and donor-recipient matching, sensitization and antibody management, immunosuppression, rejection surveillance, chronic graft disease, mechanical support, infection and malignancy, program oversight, and the registry forms themselves. It was compiled to choose and justify era cuts in analyses of national registry data. It is not a systematic review.</p>
+<p id="counts"></p>
+
+<h2>How it was compiled</h2>
+<ol>
+  <li><b>Search.</b> Two literature passes in November 2026 searched PubMed and Europe PMC domain by domain, the FDA device and drug approval records, and OPTN and SRTR documents. The searches and the drafting of the entries were done with an AI research assistant (Claude, Anthropic) under the author's direction.</li>
+  <li><b>Primary documents.</b> OPTN policy notices, guidance notices, committee reports and the current OPTN Policies were downloaded by the author, and every page cited in the timeline was read. They are listed at the end of this page.</li>
+  <li><b>Second verification.</b> Every entry was then checked again against its source: the cited page of each OPTN document, the FDA record, the data dictionary of the national registry file, and for every paper the PubMed record plus the abstract or, where available, the full text. The paper checks were done by independent AI reviewers that saw only the entry and the paper, and were told to look for entries the paper does not support.</li>
+  <li><b>Review by the author.</b> Entries flagged in the second verification are being reviewed by the author one by one. Until that is finished the site is marked as a draft.</li>
+</ol>
+
+<h2>Verification status</h2>
+<ul>
+  <li><b>Verified</b>: the date is stated in a cited document that was opened and read: an OPTN document, an FDA record, a full text or an abstract. For a guideline, trial or report, the date is its publication date.</li>
+  <li><b>Partly verified</b>: the change is confirmed, but the exact date rests on a secondary summary, or the sources give it only to the month or year.</li>
+  <li><b>Unverified</b>: reported or expected, but not confirmed in any document that could be opened. Entries dated "Not found" record a search that returned nothing. They are kept so that a gap is visible as a gap.</li>
+</ul>
+
+<h2>Importance tiers</h2>
+<ul>
+  <li><b>Tier 1</b>: changes who gets transplanted or how donor and recipient are matched. Examples: allocation and status rules, exceptions and review boards, ABO-incompatible rules, geographic sharing, donor pool changes, devices that change who survives to transplant.</li>
+  <li><b>Tier 2</b>: changes how rejection or graft loss is prevented, detected or treated. Examples: immunosuppression, desensitization, antibody monitoring, surveillance, definitions and treatment of chronic graft disease, infection prophylaxis.</li>
+  <li><b>Tier 3</b>: context. Examples: registry form changes, reports, guidelines that codify existing practice, oversight programs.</li>
+</ul>
+<p>The ranked lists of the most important changes on the heart and lung pages are a judgment of which changes matter most for a survival analysis of national registry data.</p>
+
+<h2>How to read the charts</h2>
+<ul>
+  <li>Each point is one entry. Color and shape give the verification status; marker size gives the tier.</li>
+  <li>A line is an entry that covers a period. A date known only to the year is drawn at mid-year. "Before" and "About" dates are drawn at that year and keep their wording in the table.</li>
+  <li>Dashed vertical lines mark the allocation dates that make natural era cuts.</li>
+  <li>Entries without a date cannot be drawn. They appear in the table under each view.</li>
+</ul>
+
+<h2>Limits</h2>
+<ul>
+  <li><b>Abstract-level checks.</b> A paper marked as supporting an entry was checked against its abstract unless the full text was available. A claim can be narrower in the full text than in the entry.</li>
+  <li><b>Implementation days.</b> OPTN policy notices are written before a change takes effect and usually say "pending implementation". The exact day often comes from a later paper or an annual data report. Where no document states the day, the entry says so.</li>
+  <li><b>Older policy.</b> The OPTN website holds no notices from before about 2016. Dates before that rest mainly on the policy history by Colvin-Adams and colleagues (2012) and are often known to the year only.</li>
+  <li><b>Not exhaustive.</b> The searches were targeted, not systematic. An absence from this timeline does not show that a change did not happen.</li>
+  <li><b>United States only.</b> Practice in other countries is included only where it shaped US practice.</li>
+</ul>
+
+<h2>OPTN and related documents cited by short name</h2>
+<p>The source column names these documents by a short name followed by the page. Papers are cited by first author, year and PubMed identifier, with a link.</p>
+<div id="documents"></div>
+
+<h2>Corrections</h2>
+<p>Corrections and missing changes are welcome through the <a href="https://github.com/AndreasMaskos/transplant-practice-timeline/issues" target="_blank" rel="noopener">issue page of the repository</a>. Please name the entry, the corrected date and a source.</p>
+
+</main>
+<footer>
+  <p><a href="index.html">Back to the timeline</a></p>
+  <p>Andreas Maskos, Stanford University. <span id="built"></span> Charts are drawn with plotly.js (MIT license).</p>
+</footer>
+<script src="data.js"></script>
+<script>
+// Fills the counts and the document list from the same data file the timeline uses.
+(function () {
+  const D = window.TIMELINE, c = D.counts, n = k => (c.status[k] || 0);
+  document.getElementById("counts").textContent =
+    `At the last build (${D.built}) the timeline holds ${c.total} entries citing ${c.pmids} papers: ${n("verified")} verified, ${n("partly verified")} partly verified and ${n("unverified")} unverified. ` +
+    `By importance: ${c.tier["1"]} in Tier 1, ${c.tier["2"]} in Tier 2 and ${c.tier["3"]} in Tier 3. ` +
+    `In the second verification ${c.recheck.confirmed} entries were confirmed against their source without reservation; the other ${c.recheck.open} carry a caveat that is under review, most often a wording that is broader than the cited abstract or a date known only from a secondary source.`;
+  document.getElementById("documents").innerHTML = "<table><tr><th>Short name</th><th>Document</th></tr>" +
+    D.documents.map(d => `<tr><td>${d.short}</td><td>${d.title}</td></tr>`).join("") + "</table>";
+  document.getElementById("built").textContent = "Built " + D.built + ".";
+})();
+</script>
+</body>
+</html>

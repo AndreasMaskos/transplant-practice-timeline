@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Practice changes in US pediatric heart and lung transplantation, 1987-2026</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-default="pediatric-heart">
+<header>
+  <nav class="top"><a href="index.html">Timeline</a> · <a href="methods.html">Methods and sources</a></nav>
+  <h1>Practice changes in US pediatric heart and lung transplantation, 1987-2026</h1>
+  <p class="sub" id="sub"></p>
+  <p class="draft">Draft. Every date carries its verification status; partly verified and unverified dates still await checking against a primary document.</p>
+  <div class="filters">
+    <div class="group"><span class="glabel">Show</span><span id="views"></span></div>
+    <div class="group"><span class="glabel">Status</span><span id="status"></span></div>
+    <div class="group"><span class="glabel">Importance</span><span id="tier"></span></div>
+    <div class="group"><label class="glabel" for="q">Search</label><input id="q" type="search" placeholder="for example ABO, Berlin Heart, CLAD" autocomplete="off"><span class="n" id="qcount"></span></div>
+  </div>
+  <p class="sub" id="tiernote"></p>
+</header>
+<main>
+  <p id="empty">Select one or both views above. Two views are drawn under each other on the same time axis, so heart and lung can be compared.</p>
+  <div id="charts"></div>
+  <section id="tablewrap">
+    <h2>All entries in this view</h2>
+    <div id="table"></div>
+  </section>
+</main>
+<aside id="detail">Click a point to see the entry and its linked sources.</aside>
+<footer>
+  <p>Single pages: <span id="pagelinks"></span> · <a href="index.html">Main page</a> · <a href="methods.html">Methods and sources</a></p>
+  <p>Andreas Maskos, Stanford University. <span id="built"></span></p>
+</footer>
+<script src="plotly.min.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
